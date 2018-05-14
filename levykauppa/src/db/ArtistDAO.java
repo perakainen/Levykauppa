@@ -70,7 +70,7 @@ public class ArtistDAO {
 		return allArtists;
 	}
 
-	List<Artist> findArtistByName(String name) {
+	public List<Artist> findArtistByName(String name) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet results = null;

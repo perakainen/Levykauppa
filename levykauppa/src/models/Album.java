@@ -2,15 +2,15 @@ package models;
 
 public class Album {
 	private long id;
-	private String name;
+	private String title;
 
 	public Album(String name) {
-		this.name = name;
+		this.title = name;
 	}
 
 	public Album(long id, String name) {
 		this.id = id;
-		this.name = name;
+		this.title = name;
 	}
 
 	public void setId(long id) {
@@ -21,12 +21,12 @@ public class Album {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
 	public String toString() {
-		return this.name;
+		return this.title;
 	}
 
 }

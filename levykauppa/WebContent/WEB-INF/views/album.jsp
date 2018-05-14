@@ -9,12 +9,12 @@
 </head>
 <body>
 
-<h1><c:out value="${ artist.getName() }" /></h1>
+<h1><c:out value="${ album.getTitle() }" /></h1>
 
 <ul>
-<c:forEach items="${ albums }" var="album">
+<c:forEach items="${ tracks }" var="track">
     <li>
-        <c:out value="${ album.getTitle() }" />
+        <c:out value="${ track.getName() }" />
     </li>
 </c:forEach>
 </ul>

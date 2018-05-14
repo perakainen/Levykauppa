@@ -10,30 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import db.AlbumDAO;
-import db.ArtistDAO;
+import db.TrackDAO;
 import models.Album;
-import models.Artist;
+import models.Track;
 
 /**
- * Servlet implementation class ArtistServlet
+ * Servlet implementation class AlbumServlet
  */
-@WebServlet("/Artistid")
-public class ArtistServlet extends HttpServlet {
+@WebServlet("/Albumid")
+public class AlbumServlet extends HttpServlet {
 
-	private ArtistDAO artistDao = new ArtistDAO();
 	private AlbumDAO albumDao = new AlbumDAO();
+	private TrackDAO trackDao = new TrackDAO();
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		long id = Long.parseLong(req.getParameter("id"));
 
-		Artist artist = artistDao.findArtist(id);
-		List<Album> albums = albumDao.findAlbumsByArtist(artist);
+		Album a = albumDao.findAlbum(id);
+		List<Track> track = trackDao.findTracksByAlbum(a);
 
-		if (artist != null && albums != null) {
-			req.setAttribute("artist", artist);
-			req.setAttribute("album", albums);
-			req.getRequestDispatcher("/WEB-INF/views/artist.jsp").include(req, resp);
+		if (a != null && track != null) {
+			req.setAttribute("album", a);
+			req.setAttribute("track", track);
+			req.getRequestDispatcher("/WEB-INF/views/album.jsp").include(req, resp);
 		}
 
 		else {
@@ -43,12 +43,12 @@ public class ArtistServlet extends HttpServlet {
 
 		// String first = req.getParameter("id");
 
-		// long artistId = Long.parseLong(first);
+		// long albumId = Long.parseLong(first);
 
 		// PrintWriter writer = resp.getWriter();
-		// Artist artist = artistDao.findArtist(artistId);
+		// Album album = albumDao.findAlbum(albumId);
 
-		// writer.println(artist.getName());
+		// writer.println(album.getName());
 	}
 
 }

@@ -26,7 +26,7 @@ public class TrackDAO {
 
 		try {
 			connection = db.connect();
-			statement = connection.prepareStatement("SELECT TrackId, Name FROM Track WHERE TrackId = ?");
+			statement = connection.prepareStatement("SELECT * FROM Track WHERE TrackId = ?");
 			statement.setLong(1, id);
 			results = statement.executeQuery();
 
@@ -70,7 +70,7 @@ public class TrackDAO {
 		return allTracks;
 	}
 
-	List<Track> findTracksByAlbum(Album album) {
+	public List<Track> findTracksByAlbum(Album album) {
 
 		Connection connection = null;
 		PreparedStatement statement = null;

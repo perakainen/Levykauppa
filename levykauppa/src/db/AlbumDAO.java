@@ -30,7 +30,7 @@ public class AlbumDAO {
 			results = statement.executeQuery();
 
 			if (results.next()) {
-				String name = results.getString("Name");
+				String name = results.getString("Title");
 				long albumId = results.getLong("AlbumId");
 				return new Album(albumId, name);
 			}
@@ -70,7 +70,7 @@ public class AlbumDAO {
 		return allAlbums;
 	}
 
-	List<Album> findAlbumsByArtist(Artist artist) {
+	public List<Album> findAlbumsByArtist(Artist artist) {
 
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -110,7 +110,7 @@ public class AlbumDAO {
 
 	}
 
-	List<Album> findAlbumsByTitle(String title) {
+	public List<Album> findAlbumsByTitle(String title) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet results = null;
@@ -138,7 +138,7 @@ public class AlbumDAO {
 			statement = connection.prepareStatement("INSERT INTO Album (Name) VALUES (?)",
 					Statement.RETURN_GENERATED_KEYS);
 
-			statement.setString(1, album.getName());
+			statement.setString(1, album.getTitle());
 			statement.executeUpdate();
 
 			results = statement.getGeneratedKeys();
