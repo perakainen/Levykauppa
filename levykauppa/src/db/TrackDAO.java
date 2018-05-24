@@ -79,7 +79,7 @@ public class TrackDAO {
 		try {
 			connection = db.connect();
 			statement = connection.prepareStatement(
-					"SELECT TrackId, Name FROM Track t JOIN Album a ON a.AlbumId = t.TrackId WHERE a.Title = ?");
+					"SELECT TrackId, Name FROM Track t JOIN Album a ON a.AlbumId = t.AlbumId WHERE a.Title = ?");
 			statement.setString(1, album.toString());
 			// System.out.println(album.toString());
 			results = statement.executeQuery();

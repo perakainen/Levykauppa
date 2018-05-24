@@ -32,7 +32,7 @@ public class AlbumServlet extends HttpServlet {
 
 		if (a != null && track != null) {
 			req.setAttribute("album", a);
-			req.setAttribute("track", track);
+			req.setAttribute("tracks", track);
 			req.getRequestDispatcher("/WEB-INF/views/album.jsp").include(req, resp);
 		}
 

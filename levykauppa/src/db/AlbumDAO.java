@@ -79,7 +79,7 @@ public class AlbumDAO {
 		try {
 			connection = db.connect();
 			statement = connection.prepareStatement(
-					"SELECT Name, Title FROM Artist a JOIN Album al ON al.AlbumId = a.ArtistId WHERE Name = ?");
+					"SELECT Name, Title FROM Artist a JOIN Album al ON al.ArtistId = a.ArtistId WHERE Name = ? ORDER BY Title");
 
 			String artistiNimi = artist.getName();
 			statement.setString(1, artistiNimi); // Indexi-virhe??
@@ -89,7 +89,7 @@ public class AlbumDAO {
 			List<Album> matchingAlbums = new ArrayList<>();
 
 			while (results.next()) {
-				String albumName = results.getString("Name");
+				String albumName = results.getString("Title");
 				Album a = new Album(albumName);
 
 				matchingAlbums.add(a);

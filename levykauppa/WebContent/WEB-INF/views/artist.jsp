@@ -19,6 +19,5 @@
 </c:forEach>
 </ul>
 
-
 </body>
 </html>
