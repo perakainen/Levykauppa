@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,21 +24,32 @@ public class CreateArtistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/newArtist.jsp");
-		dispatcher.include(req, resp);
+		dispatcher.forward(req, resp);
+	}
 
-		String artistName = req.getParameter("artistName");
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		if (artistName == null || artistName.isEmpty()) {
+		// dispatcher.include(req, resp);
 
-			req.setAttribute("error", "No name given");
-			doGet(req, resp);
+		PrintWriter writer = resp.getWriter();
 
-		} else {
+		String artistName = req.getParameter("name");
+
+		if (!artistName.isEmpty() || !"".equals(artistName)) {
+
 			Artist artist = new Artist(artistName);
 
 			artistDao.storeArtist(artist);
 
-			resp.sendRedirect("/Levykauppa/Artistid?id=" + artist.getId());
+			writer.println("Artistin luonti onnistui!");
 		}
+
+		else {
+
+			writer.println("Luominen epäonnistui!");
+
+		}
+
 	}
 }

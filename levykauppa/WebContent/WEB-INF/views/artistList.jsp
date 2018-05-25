@@ -9,13 +9,10 @@
 </head>
 <body>
 
-<a href="">Hae artisteja</a>
-<a href="/levykauppa/new_artist">Lisää artisti</a>
-
 <ul>
     <c:forEach items="${ artists }" var="artist">
         <li>
-            <a href="/levykauppa/artist?id=${ artist.getId() }">
+            <a href="/levykauppa/Artistid?id=${ artist.getId() }">
                 <c:out value="${ artist.getName() }" />
             </a>
         </li>

@@ -8,20 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<h1>Luo uusi artisti</h1>
-
-<form action="/levykauppa/Artistnew" method="post"  >
-	<label>
-    	Name: <input name="name" />
-    </label>
-    <button type="submit" formmethod="post">Save</button>
-</form>
-
+<h1>Etusivu</h1>
+<h2>Levykauppa</h2>
 <form action="/levykauppa/Artist" method="post">
-
 	<button type ="submit" name="takaisin"  formmethod="post">Listaa Artistit</button>
 </form>
-
+<form action="/levykauppa/Artistnew">
+	<button type ="submit" value="Listaa Artistit" >Lis‰‰ Artisti</button>
+</form>
 </body>
 </html>
