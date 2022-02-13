@@ -1,2 +1,2 @@
-# harjoitustyo
-Tassa harjoitustyoni
+# Levykauppa
+Harjoitustyö koskien ohjelmointi 1 kurssia
